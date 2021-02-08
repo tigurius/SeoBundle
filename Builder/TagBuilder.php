@@ -101,14 +101,15 @@ class TagBuilder implements RenderableInterface
      *
      * @return LinkTag
      */
-    public function addLink($name, $href = null, $rel = null, $type = null, $title = null)
+    public function addLink($name, $href = null, $rel = null, $type = null, $title = null, $as = null)
     {
         return $this->links[$name] = $this->tagFactory
             ->createLink()
             ->setHref($href)
             ->setRel($rel)
             ->setType($type)
-            ->setTitle($title);
+            ->setTitle($title)
+            ->setAs($as);
     }
 
     /**
