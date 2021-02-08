@@ -30,6 +30,11 @@ class LinkTag implements RenderableInterface
     protected $href;
 
     /**
+     * @var string
+     */
+    protected $as;
+
+    /**
      * @return string
      */
     public function getHref()
@@ -110,6 +115,24 @@ class LinkTag implements RenderableInterface
     }
 
     /**
+     * @return string
+     */
+    public function getAs(): string
+    {
+        return $this->as;
+    }
+
+    /**
+     * @param string $as
+     */
+    public function setAs(string $as): void
+    {
+        $this->as = $as;
+        return $this;
+    }
+
+
+    /**
      * Returns a string only if $value isn't null
      *
      * @param string $format
@@ -135,8 +158,9 @@ class LinkTag implements RenderableInterface
         $rel = $this->sprintfIfNotNull('rel="%s" ', $this->getRel());
         $type = $this->sprintfIfNotNull('type="%s" ', $this->getType());
         $title = $this->sprintfIfNotNull('title="%s" ', $this->getTitle());
+        $as = $this->sprintfIfNotNull('as="%s" ', $this->getAs());
 
-        return sprintf('<link %s%s%s%s/>', $href, $rel, $type, $title);
+        return sprintf('<link %s%s%s%s%s/>', $href, $rel, $type, $title, $as);
     }
 
     /**
